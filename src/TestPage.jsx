@@ -65,12 +65,22 @@ class TestPage extends React.Component {
   render() {
     const { imgUrl } = this.state;
     return (
-      <div>
-        <div style={{ marginTop: "30px" }}>
-          <span style={{ marginRight: "10px" }}>Select an image file:</span>
+      <div className="w-[1152px] max-w-6xl">
+        <h1 className="text-6xl py-12 font-extrabold text-center">
+          Signals and System Analysis in Image Processing
+        </h1>
+        <div className="pb-12 flex items-center justify-center gap-4">
+          <span className="text-xl">Select an image file:</span>
           <input
             type="file"
             name="file"
+            className="block text-sm text-slate-500
+            file:mr-4 file:py-2 file:px-4
+            file:rounded-full file:border-0
+            file:text-sm file:font-semibold
+            file:bg-violet-50 file:text-violet-700
+            hover:file:bg-violet-100
+      "
             accept="image/*"
             onChange={(e) => {
               if (e.target.files[0]) {
@@ -81,11 +91,9 @@ class TestPage extends React.Component {
             }}
           />
         </div>
-
         {imgUrl && (
           <div className="images-container">
-            <div className="image-card">
-              <div style={{ margin: "10px" }}>↓↓↓ The original image ↓↓↓</div>
+            <div className="image-card shadow-md overflow-hidden rounded-md">
               <img
                 alt="Original input"
                 src={imgUrl}
@@ -93,26 +101,29 @@ class TestPage extends React.Component {
                   this.processImage(e.target);
                 }}
               />
+              <div className="text-xl py-4 text-center">Original Image</div>
             </div>
 
-            <div className="image-card">
-              <div style={{ margin: "10px" }}>↓↓↓ The gray scale image ↓↓↓</div>
+            <div className="image-card shadow-md overflow-hidden rounded-md">
               <canvas ref={this.grayImgRef} />
+              <div className="text-xl py-4 text-center">Gray Scale</div>
             </div>
 
-            <div className="image-card">
-              <div style={{ margin: "10px" }}>↓↓↓ Canny Edge Result ↓↓↓</div>
+            <div className="image-card shadow-md overflow-hidden rounded-md">
               <canvas ref={this.cannyEdgeRef} />
+              <div className="text-xl py-4 text-center">
+                Canny Edge Detection
+              </div>
             </div>
 
-            <div className="image-card">
-              <div style={{ margin: "10px" }}>↓↓↓ Gaussia Blur ↓↓↓</div>
+            <div className="image-card shadow-md overflow-hidden rounded-md">
               <canvas ref={this.gausBlurRef} />
+              <div className="text-xl py-4 text-center">Gaussian Blur</div>
             </div>
 
-            <div className="image-card">
-              <div style={{ margin: "10px" }}>↓↓↓ Median Blur ↓↓↓</div>
+            <div className="image-card shadow-md overflow-hidden rounded-md">
               <canvas ref={this.medianBlurRef} />
+              <div className="text-xl py-4 text-center">Median Blur</div>
             </div>
 
             {/* <div className="image-card">

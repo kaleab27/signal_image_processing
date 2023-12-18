@@ -3,17 +3,24 @@
   text-align: center;
 }
 
-.images-container {
+/* .images-container {
   display: flex;
   flex-wrap: wrap;
-}
+} */
 
 .image-card {
   margin: 10px;
 }
 
+.image-card,
 .image-card img,
 .image-card canvas {
   max-width: 400px;
   max-height: 400px;
+}
+
+.images-container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
 }
